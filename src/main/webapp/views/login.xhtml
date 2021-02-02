@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		 xmlns:ui="http://java.sun.com/jsf/facelets"
+		 xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:f="http://java.sun.com/jsf/core">
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="title">#{msg['login.title']}</ui:define>
+		<ui:define name="content">
+			<h:panelGroup class="container" layout="block">
+				<h:panelGroup class="row justify-content-md-center" layout="block">
+					<h:form class="form-signin text-center" id="loginform">
+						<h1 class="h3 mb-3  mx-5 font-weight-normal">#{msg['login.content']}</h1>
+						<h:panelGroup class="form-group" layout="block">
+							<h:outputLabel for="mail" value="#{msg['login.mail']}"/>
+							<h:inputText id="mail" class="form-control" value="#{loginBean.mail}" required="true" requiredMessage="#{msg['login.validation']}"/>
+							<h:message for="mail" class="form-text text-muted" styleClass="errorMessage"/>
+						</h:panelGroup>
+						<h:panelGroup class="form-group" layout="block">
+							<h:outputLabel for="password" value="#{msg['login.password']}"/>
+							<h:inputSecret id="password" class="form-control" value="#{loginBean.password}" required="true" requiredMessage="#{msg['login.validation']}"/>
+							<h:message for="password" class="form-text text-muted" styleClass="errorMessage"/>
+						</h:panelGroup>
+						<h:commandButton id="signin" value="#{msg['login.button']}" class="btn btn-primary" action="#{loginBean.validateMailPassword}"/>
+						<br/>
+						<br/>
+					</h:form>
+				</h:panelGroup>
+			</h:panelGroup>
+		</ui:define>
+	</ui:composition>
+</html>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+	<h:panelGroup class="col px-0" layout="block">
+		<h:panelGroup class="navbar navbar-expand navbar-light bg-light" layout="block">
+			<h:link class="navbar-brand" outcome="index" value="#{msg['header.link1']}" />
+			<h:panelGroup class="collapse navbar-collapse" layout="block">
+				<h:panelGroup class="col" layout="block">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<h:link class="nav-link" outcome="catalog" value="#{msg['header.link2']}" />
+					</li>
+					<li class="nav-item active">
+						<h:link class="nav-link" outcome="registration" value="#{msg['header.link3']}" />
+					</li>
+					<li class="nav-item active">
+						<h:link class="nav-link" outcome="link4" value="#{msg['header.link4']}" />
+					</li>
+					<li class="nav-item active">
+						<h:link class="nav-link" outcome="link5" value="#{msg['header.link5']}" />
+					</li>
+				</ul>
+				</h:panelGroup>
+				<h:panelGroup class="col text-right" layout="block">
+					<h:form>
+						<h:panelGroup rendered="#{sessionScope['userrole'] ne null}">
+							<h:outputText class="text-capitalize" value="bonjour #{sessionScope['username']}"></h:outputText>
+							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>
+							<h:commandButton id="hdbtn1" value="#{msg['header.log.button1']}" class="btn btn-outline-primary my-2 my-sm-0" action="connected"/>
+							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>
+							<h:commandButton id="hdbtn2" value="#{msg['header.log.button2']}" class="btn btn-outline-primary my-2 my-sm-0" action="#{loginBean.logout}"/>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{sessionScope['userrole'] eq null}">
+							<h:commandButton id="hdbtn3" value="#{msg['header.button1']}" class="btn btn-outline-primary my-2 my-sm-0" action="basket"/>
+							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>
+							<h:commandButton id="hdbtn4" value="#{msg['header.button2']}" class="btn btn-outline-primary my-2 my-sm-0" action="login"/>
+						</h:panelGroup>
+					</h:form>
+				</h:panelGroup>
+				<h:panelGroup class="col-1" layout="block">
+					<h:form id="Locale_form">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<h:commandLink value="#{msg['header.lang1']}" action="#{changeLocale.setFrenchLocale}" />
+							</li>
+							<li class="nav-item active">
+								<h:outputText class="text-primary" value="&nbsp;|&nbsp;"></h:outputText>
+							</li>
+							<li class="nav-item active">
+								<h:commandLink value="#{msg['header.lang2']}" action="#{changeLocale.setDutchLocale}" />
+							</li>
+							<li class="nav-item active">
+								<h:outputText class="text-primary" value="&nbsp;|&nbsp;"></h:outputText>
+							</li>
+							<li class="nav-item active">
+								<h:commandLink value="#{msg['header.lang3']}" action="#{changeLocale.setEnglishLocale}" />
+							</li>
+						</ul>
+					</h:form>
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
+</h:body>
+</html>
