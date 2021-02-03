@@ -23,7 +23,7 @@
         <from-view-id>/views/login.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/views/priv/connected.xhtml</to-view-id>
+            <to-view-id>/views/priv/myprofile.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -65,8 +65,8 @@
             <to-view-id>/views/registration.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>connected</from-outcome>
-            <to-view-id>/views/priv/connected.xhtml</to-view-id>
+            <from-outcome>myprofile</from-outcome>
+            <to-view-id>/views/priv/myprofile.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>

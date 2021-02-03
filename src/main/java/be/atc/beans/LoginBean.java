@@ -1,7 +1,6 @@
 package be.atc.beans;
 
 import be.atc.entities.User;
-import be.atc.utils.FindUser;
 import be.atc.utils.LoginUtils;
 import be.atc.utils.SessionUtils;
 
@@ -34,7 +33,7 @@ public class LoginBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Incorrect Username and Passowrd",
+                            "Incorrect Username and Password",
                             "Please enter correct username and Password"));
             return "login";
         }
