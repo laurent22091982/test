@@ -27,7 +27,7 @@ public class City implements Serializable {
 
 	@NotNull
 	@Size(min = 2, max = 10)
-	private String postcode;
+	private String zipcode;
 
 	//bi-directional many-to-one association to Address
 	@OneToMany(mappedBy="city")
@@ -57,12 +57,12 @@ public class City implements Serializable {
 		this.label = label;
 	}
 
-	public String getPostcode() {
-		return this.postcode;
+	public String getZipcode() {
+		return this.zipcode;
 	}
 
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 
 	public List<Address> getAddresses() {

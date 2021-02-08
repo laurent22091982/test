@@ -7,7 +7,8 @@
 	<f:view locale="#{changeLocale.locale}">
 		<h:head>
 			<title><ui:insert name="title">#{msg['defaultpage.title']}</ui:insert></title>
-			
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
  			<h:outputStylesheet library="css" name="style.css"/>
  			<h:outputStylesheet library="css" name="bootstrap.min.css"/>
  			<h:outputStylesheet library="css" name="jquery-ui.min.css"/>
@@ -18,19 +19,18 @@
   			<h:outputScript library="js" name="formatDatePicker.js" />
   		</h:head>
 		<h:body>
+
+			<ui:include src="header.xhtml" />
+
 			<h:panelGroup class="container" layout="block">
 				<h:panelGroup class="row" layout="block">
-					<ui:include src="header.xhtml" />
-				</h:panelGroup>
-				<h:panelGroup class="row" layout="block">
-					<h:panelGroup class="col mx-0" layout="block">
-						<ui:insert name="content" />
-					</h:panelGroup>
-				</h:panelGroup>
-				<h:panelGroup class="row" layout="block">
-					<ui:include src="footer.xhtml" />
+					<ui:insert name="content" />
 				</h:panelGroup>
 			</h:panelGroup>
+
+
+			<ui:include src="footer.xhtml" />
+
 		</h:body>
 	</f:view>
 </html>

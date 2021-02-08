@@ -7,19 +7,55 @@
 	<ui:composition template="/WEB-INF/templates/template.xhtml">
 		<ui:define name="title">#{msg['catalog.title']}</ui:define>
 		<ui:define name="content">
-			<div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				#{msg['catalog.content']}
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-			</div>
+			<h1 class="mt-4 mb-4">#{msg['catalog.title']}</h1>
+					<h:panelGroup class="container-fluid px-0" layout="block">
+						<h:panelGroup class="row d-flex justify-content-around" layout="block">
+
+							<h:panelGroup class="col-md-4 m-5" layout="block">
+								<h:outputText class="h5 text-success" value="#{msg['catalog.menu.link1']}"/>
+								<h:link outcome="catalog/decoration">
+									<h:graphicImage value="/resources/images/decorationjardin.jpg" width="100%"/>
+								</h:link>
+							</h:panelGroup>
+
+							<h:panelGroup class="col-md-4 m-4" layout="block">
+								<h:outputText class="h5 text-success" value="#{msg['catalog.menu.link2']}"/>
+								<h:link outcome="catalog/fountain">
+									<h:graphicImage value="/resources/images/fontaine.jpg" width="100%"/>
+								</h:link>
+							</h:panelGroup>
+
+							<h:panelGroup class="col-md-4 m-4" layout="block">
+								<h:outputText class="h5 text-success" value="#{msg['catalog.menu.link3']}"/>
+								<h:link outcome="catalog/gardenFurniture">
+									<h:graphicImage value="/resources/images/meublejardin.jpg" width="100%"/>
+								</h:link>
+							</h:panelGroup>
+
+							<h:panelGroup class="col-md-4 m-4" layout="block">
+								<h:outputText class="h5 text-success" value="#{msg['catalog.menu.link4']}"/>
+								<h:link outcome="catalog/lawnmower">
+									<h:graphicImage value="/resources/images/tondeuse.jpg" width="100%"/>
+								</h:link>
+							</h:panelGroup>
+
+							<h:panelGroup class="col-md-4 m-4" layout="block">
+								<h:outputText class="h5 text-success" value="#{msg['catalog.menu.link5']}"/>
+								<h:link outcome="catalog/swimmingPool">
+									<h:graphicImage value="/resources/images/piscine.jpg" width="100%"/>
+								</h:link>
+							</h:panelGroup>
+
+							<h:panelGroup class="col-md-4 m-4" layout="block">
+								<h:outputText class="h5 text-success" value="#{msg['catalog.menu.link6']}"/>
+								<h:link outcome="catalog/tools">
+									<h:graphicImage value="/resources/images/outillage.jpg" width="100%"/>
+								</h:link>
+							</h:panelGroup>
+						</h:panelGroup>
+						<h:link class="nav-link text-right mb-5 mt-5" outcome="index" value="#{msg['catalog.menu.linkReturn']}" />
+					</h:panelGroup>
+
 		</ui:define>
 	</ui:composition>
 </html>
