@@ -4,7 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -13,7 +15,11 @@ import java.util.List;
  */
 @Entity
 @Table(name="cities")
-@NamedQuery(name="City.findAll", query="SELECT c FROM City c")
+@NamedQueries({
+		@NamedQuery(name = "City.findAll", query = "SELECT c FROM City c ORDER BY c.postcode"),
+		@NamedQuery(name = "City.findPostcode", query = "SELECT c FROM City c WHERE c.postcode LIKE :postcode ORDER BY c.postcode")
+})
+
 public class City implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -95,4 +101,27 @@ public class City implements Serializable {
 		this.country = country;
 	}
 
+	@Override
+	public int hashCode() {
+		int result = Objects.hash(id, label, postcode);
+		result = 31 * result;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof City)) {
+			return false;
+		}
+		City other = (City) obj;
+		if ((this.id == 0 && other.id != 0) || (this.id != 0 && this.id != other.id)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(getId());
+	}
 }

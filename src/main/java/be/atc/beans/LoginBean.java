@@ -1,7 +1,7 @@
 package be.atc.beans;
 
 import be.atc.entities.User;
-import be.atc.utils.LoginUtils;
+import be.atc.utils.UserUtils;
 import be.atc.utils.SessionUtils;
 
 import javax.enterprise.context.SessionScoped;
@@ -10,6 +10,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
+
+import static be.atc.utils.SessionUtils.*;
+import static be.atc.utils.UserUtils.validateLogin;
 
 @Named
 @SessionScoped
@@ -22,12 +25,10 @@ public class LoginBean implements Serializable {
 
     //validate login
     public String validateMailPassword() {
-        user = LoginUtils.validate(mail, password);
+        user = validateLogin(mail, password);
         if ( user != null) {
-            HttpSession session = SessionUtils.getSession();
-            session.setAttribute("username", user.getFirstname());
-            session.setAttribute("userid", user.getId());
-            session.setAttribute("userrole", user.getRole().getId());
+            HttpSession session = getSession();
+            session.setAttribute("connectedUser", user);
             return "success";
         } else {
             FacesContext.getCurrentInstance().addMessage(
@@ -41,7 +42,7 @@ public class LoginBean implements Serializable {
 
     //logout event, invalidate session
     public String logout() {
-        HttpSession session = SessionUtils.getSession();
+        HttpSession session = getSession();
         session.invalidate();
         return "login";
     }
