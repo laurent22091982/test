@@ -2,13 +2,10 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
 
 /**
  * The persistent class for the users database table.
@@ -28,7 +25,6 @@ public class User implements Serializable {
 	private int id;
 
 	private boolean active;
-
 
 	@Size(max = 30)
 	@Column(name="business_number")
@@ -56,9 +52,9 @@ public class User implements Serializable {
 	@Column(name="vat_number")
 	private String vatNumber;
 
-	//bi-directional many-to-one association to Basket
+	//bi-directional many-to-one association to CustomerOrder
 	@OneToMany(mappedBy="user")
-	private List<Basket> baskets;
+	private List<CustomerOrder> customersOrders;
 
 	//bi-directional many-to-one association to SupplierOrder
 	@OneToMany(mappedBy="user")
@@ -88,9 +84,7 @@ public class User implements Serializable {
 		return this.active;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+	public void setActive(boolean active) { this.active = active; }
 
 	public String getBusinessNumber() {
 		return this.businessNumber;
@@ -148,26 +142,26 @@ public class User implements Serializable {
 		this.vatNumber = vatNumber;
 	}
 
-	public List<Basket> getBaskets() {
-		return this.baskets;
+	public List<CustomerOrder> getCustomersOrders() {
+		return this.customersOrders;
 	}
 
-	public void setBaskets(List<Basket> baskets) {
-		this.baskets = baskets;
+	public void setCustomersOrders(List<CustomerOrder> customersOrders) {
+		this.customersOrders = customersOrders;
 	}
 
-	public Basket addBasket(Basket basket) {
-		getBaskets().add(basket);
-		basket.setUser(this);
+	public CustomerOrder addCustomerOrder(CustomerOrder customerOrder) {
+		getCustomersOrders().add(customerOrder);
+		customerOrder.setUser(this);
 
-		return basket;
+		return customerOrder;
 	}
 
-	public Basket removeBasket(Basket basket) {
-		getBaskets().remove(basket);
-		basket.setUser(null);
+	public CustomerOrder removeCustomerOrder(CustomerOrder customerOrder) {
+		getCustomersOrders().remove(customerOrder);
+		customerOrder.setUser(null);
 
-		return basket;
+		return customerOrder;
 	}
 
 	public List<SupplierOrder> getSuppliersOrders() {
@@ -231,10 +225,6 @@ public class User implements Serializable {
 	}
 
 	@Override
-	public int hashCode() {
-		int result = Objects.hash(id, lastname, firstname, mail, password, vatNumber, businessNumber, active);
-		result = 31 * result + Arrays.hashCode(salt);
-		return result;
-	}
+	public int hashCode() { return Objects.hash(id, lastname, firstname, mail); }
 
 }

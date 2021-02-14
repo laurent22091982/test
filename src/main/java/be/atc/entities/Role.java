@@ -2,9 +2,9 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -96,4 +96,25 @@ public class Role implements Serializable {
 		return user;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, label);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Role)) {
+			return false;
+		}
+		Role other = (Role) obj;
+		if ((this.id == 0 && other.id != 0) || (this.id != 0 && this.id != other.id)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(getId());
+	}
 }

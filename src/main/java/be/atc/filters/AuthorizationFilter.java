@@ -34,7 +34,7 @@ public class AuthorizationFilter implements Filter {
 
             String reqURI = reqt.getRequestURI();
             if (reqURI.contains("/priv/")
-                    && (ses == null || ses.getAttribute("userrole") == null))
+                    && (ses == null || ses.getAttribute("connectedUser") == null))
                 resp.sendRedirect(reqt.getContextPath() + "/views/login.xhtml");
             else
                 chain.doFilter(request, response);

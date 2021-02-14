@@ -7,108 +7,137 @@
 	<ui:composition template="/WEB-INF/templates/template.xhtml">
 		<ui:define name="title">#{msg['registration.title']}</ui:define>
 		<ui:define name="content">
-			<div class="container">
-				<div class="row">
+			<h:panelGroup layout="block" class="container">
+				<h:panelGroup layout="block" class="row">
 					<h:panelGroup class="col-lg-6 offset-lg-3" layout="block">
-						<div>
+						<h:panelGroup layout="block">
 							<h1 class="h3 mb-3  mx-5 my-5 font-weight-normal">#{msg['registration.content']}</h1>
-						</div>
-					<h:form id="regform">
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputFirstName">Firstname</label>
-									<input type="text" class="form-control" id="inputFirstName"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputLastName">Lastname</label>
-									<input type="text" class="form-control" id="inputLastName"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputEmail">Email</label>
-									<input type="email" class="form-control" id="inputEmail"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputPassword">Password</label>
-									<input type="password" class="form-control" id="inputPassword"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputPasswordConfirm">Password confirm</label>
-									<input type="password" class="form-control" id="inputPasswordConfirm"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputAddress">Address</label>
-									<input type="text" class="form-control" id="inputAddress"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-4">
-									<label for="inputPostNumber">Post Number</label>
-									<input type="text" class="form-control" id="inputPostNumber"/>
-								</div>
-								<div class="form-group col-md-4">
-									<label for="inputPostBox">Post Box</label>
-									<input type="text" class="form-control" id="inputPostBox"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-8">
-									<label for="inputCity">City</label>
-									<input type="text" class="form-control" id="inputCity"/>
-								</div>
-								<div class="form-group col-md-4">
-									<label for="inputZip">Zip</label>
-									<input type="text" class="form-control" id="inputZip"/>
-								</div>
-							</div>
-							<fieldset class="form-group row">
-								<legend class="col-form-label col-sm-2 float-sm-left pt-0">Account</legend>
-								<div class="col-sm-10">
-									<div class="form-check">
-										<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"/>
-										<label class="form-check-label" for="gridRadios1">Private client</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
-										<label class="form-check-label" for="gridRadios2">Pro client</label>
-									</div>
-								</div>
-							</fieldset>
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputFirstName">Vat Number</label>
-									<input type="text" class="form-control" id="inputVatNumber"/>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col">
-									<label for="inputBusinessNumber">Business Number</label>
-									<input type="text" class="form-control" id="inputBusinessNumber"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" id="gridCheck"/>
-									<label class="form-check-label" for="gridCheck">I agree with terms and conditions</label>
-								</div>
-							</div>
-							<button type="submit" class="btn btn-primary">Sign in</button>
+						</h:panelGroup>
+						<h:form id="regform">
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col">
+									<h:outputLabel for="firstname" value="#{msg['registration.firstname']}" />
+									<h:inputText class="form-control" id="firstname" value="#{registrationBean.user.firstname}"
+												 required="true" requiredMessage="#{msg['form.required']}"/>
+									<h:message id="firstnameMessage" for="firstname" errorClass="alert-danger" />
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col">
+									<h:outputLabel for="lastname" value="#{msg['registration.lastname']}" />
+									<h:inputText class="form-control" id="lastname" value="#{registrationBean.user.lastname}"
+												 required="true" requiredMessage="#{msg['form.required']}"/>
+									<h:message id="lastnameMessage" for="lastname" errorClass="alert-danger" />
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col">
+									<h:outputLabel for="mail" value="#{msg['registration.mail']}" />
+									<h:inputText class="form-control" id="mail" value="#{registrationBean.user.mail}"
+												 required="true" requiredMessage="#{msg['form.required']}"
+												 validatorMessage="#{msg['registration.mail.notvalid']}">
+										<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+										<f:validator validatorId="UserEmailValidator"/>
+									</h:inputText>
+									<h:message id="mailMessage" for="mail" errorClass="alert-danger" />
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col">
+									<h:outputLabel for="password" value="#{msg['registration.password']}" />
+									<h:inputSecret class="form-control" id="password" value="#{registrationBean.user.password}"
+												 required="true" requiredMessage="#{msg['form.required']}"/>
+									<h:message id="passwordMessage" for="password" errorClass="alert-danger" />
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col">
+									<h:outputLabel for="passwordConfirm" value="#{msg['registration.passwordConfirm']}" />
+									<h:inputSecret class="form-control" id="passwordConfirm" value="#{registrationBean.passwordConfirm}"
+												   required="true" requiredMessage="#{msg['form.required']}">
+									<f:validator validatorId="PasswordValidator"/>
+									</h:inputSecret>
+									<h:message id="passwordConfirmMessage" for="passwordConfirm" errorClass="alert-danger" />
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col">
+									<h:outputLabel for="street" value="#{msg['registration.street']}" />
+									<h:inputText class="form-control" id="street" value="#{registrationBean.address.street}"
+												 required="true" requiredMessage="#{msg['form.required']}"/>
+									<h:message id="streetMessage" for="street" errorClass="alert-danger" />
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col-md-4">
+									<h:outputLabel for="postnumber" value="#{msg['registration.postnumber']}" />
+									<h:inputText class="form-control" id="postnumber" value="#{registrationBean.address.postnumber}"
+												 required="true" requiredMessage="#{msg['form.required']}"/>
+									<h:message id="postnumberMessage" for="postnumber" errorClass="alert-danger" />
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="form-group col-md-4">
+									<h:outputLabel for="postbox" value="#{msg['registration.postbox']}" />
+									<h:inputText class="form-control" id="postbox" value="#{registrationBean.address.postbox}"/>
+								</h:panelGroup>
+							</h:panelGroup>
+								<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col-md-4">
+									<h:outputLabel for="zipCode" value="#{msg['registration.zipCode']}" />
+									<h:inputText class="form-control" id="zipCode" value="#{registrationBean.zipTemp}">													>
+										<f:ajax event="keyup" render="cityPanel" listener="#{registrationBean.updateCity}"/>
+									</h:inputText>
+									<h:message id="postcodeMessage" for="zipCode" errorClass="alert-danger" />
+								</h:panelGroup>
+								<h:panelGroup layout="block" id="cityPanel" class="form-group col-md-8">
+									<h:outputLabel for="city" value="#{msg['registration.city']}" />
+									<h:selectOneMenu class="form-control" id="city" value="#{registrationBean.address.city}">
+										<f:selectItem itemValue="#{registrationBean.address.city}" itemLabel="#{msg['registration.city.default']}" />
+										<f:selectItems value="#{registrationBean.cityList}" var="cityVal" itemValue="#{cityVal}" itemLabel="#{cityVal.zipCode} - #{cityVal.label}" />
+										<f:converter converterId="CityConverter" />
+									</h:selectOneMenu>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col-md-4">
+									<h:outputLabel for="role" value="#{msg['registration.select']}" />
+									<h:selectOneMenu class="form-control" id="role" value="#{registrationBean.user.role}">
+										<f:ajax event="change" render="pro" />
+										<f:selectItems value="#{registrationBean.availableRole}" var="roleVal" itemValue="#{roleVal}" itemLabel="#{roleVal.label}" />
+										<f:converter converterId="RoleConverter" />
+									</h:selectOneMenu>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" id="pro">
+								<h:panelGroup layout="block" id="vat" class="form-row" rendered="#{registrationBean.user.role.id eq 3}">
+									<h:panelGroup layout="block" class="form-group col">
+										<h:outputLabel for="vatNumber" value="#{msg['registration.vatNumber']}" />
+										<h:inputText class="form-control" id="vatNumber" value="#{registrationBean.user.vatNumber}"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" id="bus" class="form-row" rendered="#{registrationBean.user.role.id eq 3}">
+									<h:panelGroup layout="block" class="form-group col">
+										<h:outputLabel for="businessNumber" value="#{msg['registration.businessNumber']}" />
+										<h:inputText class="form-control" id="businessNumber" value="#{registrationBean.user.businessNumber}"/>
+									</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="form-row">
+								<h:panelGroup layout="block" class="form-group col">
+									<h:panelGroup layout="block" class="form-check">
+										<h:selectBooleanCheckbox value="#{registrationBean.agreed}" id="agreed" />
+										<h:outputLabel for="agreed" class="pl-2" value="#{msg['registration.agreed']}" />
+										<h:message id="agreedMessage" for="agreed" errorClass="alert-danger" />
+									</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:commandButton class="btn btn-primary" value="#{msg['registration.button']}" action="#{registrationBean.createUser}" />
 						</h:form>
-						<div>
+						<h:panelGroup>
 							<h1 class="my-5">&nbsp;</h1>
-						</div>
-		</h:panelGroup>
-				</div>
-			</div>
+						</h:panelGroup>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
 		</ui:define>
 	</ui:composition>
 </html>

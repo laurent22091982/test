@@ -15,9 +15,9 @@
 				<br/>
 				<h1>#{msg['myprofile.content']}</h1>
 				<h:outputText value="userMail (loginBean) : #{loginBean.user.mail}"/><br/>
-				<h:outputText value="userId (session) : #{sessionScope['userid']}" /><br/>
-				<h:outputText value="userName (session) : #{sessionScope['username']}" /><br/>
-				<h:outputText value="userrole (session) : #{sessionScope['userrole']}"/><br/>
+				<h:outputText value="userId (session) : #{sessionScope['connectedUser'].id}" /><br/>
+				<h:outputText value="userName (session) : #{sessionScope['connectedUser'].firstname}" /><br/>
+				<h:outputText value="userRole (session) : #{sessionScope['connectedUser'].role.id}"/><br/>
 				<br/>
 				<br/>
 				<br/>

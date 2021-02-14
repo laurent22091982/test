@@ -28,14 +28,14 @@
 				</h:panelGroup>
 				<h:panelGroup class="col text-right" layout="block">
 					<h:form>
-						<h:panelGroup rendered="#{sessionScope['userrole'] ne null}">
-							<h:outputText class="text-capitalize" value="#{msg['header.log.hello']} #{sessionScope['username']}"></h:outputText>
+						<h:panelGroup rendered="#{sessionScope['connectedUser'] ne null}">
+							<h:outputText class="text-capitalize" value="#{msg['header.log.hello']} #{sessionScope['connectedUser'].firstname}"></h:outputText>
 							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>
 							<h:commandButton id="hdbtn1" value="#{msg['header.log.button1']}" class="btn btn-outline-primary my-2 my-sm-0" action="myprofile"/>
 							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>
 							<h:commandButton id="hdbtn2" value="#{msg['header.log.button2']}" class="btn btn-outline-primary my-2 my-sm-0" action="#{loginBean.logout}"/>
 						</h:panelGroup>
-						<h:panelGroup rendered="#{sessionScope['userrole'] eq null}">
+						<h:panelGroup rendered="#{sessionScope['connectedUser'] eq null}">
 							<h:commandButton id="hdbtn3" value="#{msg['header.button1']}" class="btn btn-outline-primary my-2 my-sm-0" action="basket"/>
 							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>
 							<h:commandButton id="hdbtn4" value="#{msg['header.button2']}" class="btn btn-outline-primary my-2 my-sm-0" action="login"/>

@@ -3,8 +3,27 @@ package be.atc.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Gautier Olivier
+ *
+ */
 
 public class SecurePassword {
+
+    public static List<Object> hashPassword (String password) {
+        List<Object> pwdhash = new ArrayList<>();
+        try {
+            byte[] salt = getSalt();
+            pwdhash.add(0, getSecurePassword(password, salt));
+            pwdhash.add(1, salt);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return pwdhash;
+    }
 
     public static String getSecurePassword(String password, byte[] salt) {
 

@@ -2,10 +2,8 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 /**
@@ -26,7 +24,6 @@ public class CustomerOrderDocumentType implements Serializable {
 	@Column(name="document_date")
 	private LocalDateTime documentDate;
 
-	@NotNull
 	@Column(name="document_number")
 	private int documentNumber;
 

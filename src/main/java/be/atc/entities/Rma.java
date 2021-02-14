@@ -2,8 +2,7 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 
 /**
@@ -23,10 +22,10 @@ public class Rma implements Serializable {
 	@Size(min = 2, max = 100)
 	private String label;
 
-	//bi-directional many-to-one association to Returns
+	//bi-directional many-to-one association to ReturnItem
 	@ManyToOne
-	@JoinColumn(name="id_returns")
-	private Returns returns;
+	@JoinColumn(name="id_return_item")
+	private ReturnItem returnItem;
 
 	public Rma() {
 	}
@@ -47,12 +46,12 @@ public class Rma implements Serializable {
 		this.label = label;
 	}
 
-	public Returns getReturns() {
-		return this.returns;
+	public ReturnItem getReturnItem() {
+		return this.returnItem;
 	}
 
-	public void setReturns(Returns returns) {
-		this.returns = returns;
+	public void setReturnItem(ReturnItem returnItem) {
+		this.returnItem = returnItem;
 	}
 
 }

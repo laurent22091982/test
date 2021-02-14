@@ -7,8 +7,6 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>java:comp/env/jdbc/stockmanagement</jta-data-source>
         <class>be.atc.entities.Address</class>
-        <class>be.atc.entities.Basket</class>
-        <class>be.atc.entities.BasketItem</class>
         <class>be.atc.entities.Brand</class>
         <class>be.atc.entities.Carrier</class>
         <class>be.atc.entities.Category</class>
@@ -17,28 +15,31 @@
         <class>be.atc.entities.CustomerOrder</class>
         <class>be.atc.entities.CustomerOrderDocumentType</class>
         <class>be.atc.entities.DocumentType</class>
-        <class>be.atc.entities.ItemElement</class>
         <class>be.atc.entities.Item</class>
         <class>be.atc.entities.ItemCategory</class>
+        <class>be.atc.entities.ItemElement</class>
+        <class>be.atc.entities.ItemStockArea</class>
         <class>be.atc.entities.Packaging</class>
         <class>be.atc.entities.Permission</class>
         <class>be.atc.entities.PermissionRole</class>
-        <class>be.atc.entities.Returns</class>
+        <class>be.atc.entities.ReturnItem</class>
         <class>be.atc.entities.Rma</class>
         <class>be.atc.entities.Role</class>
         <class>be.atc.entities.ShippingOption</class>
-        <class>be.atc.entities.Stock</class>
+        <class>be.atc.entities.StockArea</class>
         <class>be.atc.entities.Supplier</class>
         <class>be.atc.entities.SupplierOrder</class>
         <class>be.atc.entities.SupplierOrderItem</class>
-        <class>be.atc.entities.TruckModel</class>
         <class>be.atc.entities.Truck</class>
+        <class>be.atc.entities.TruckModel</class>
         <class>be.atc.entities.User</class>
         <class>be.atc.entities.UserAddress</class>
         <properties>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/stockmanagement"/>
+            <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
         </properties>
     </persistence-unit>
 </persistence>
