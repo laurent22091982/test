@@ -23,7 +23,7 @@
 					<ui:include src="header.xhtml" />
 				</h:panelGroup>
 				<h:panelGroup class="row" layout="block">
-					<h:panelGroup class="col-3 px-0" rendered="#{sessionScope['userrole'] ne null}">
+					<h:panelGroup class="col-3 px-0" rendered="#{sessionScope['connectedUser'] ne null}">
 						<ui:include src="menu.xhtml" />
 					</h:panelGroup>
 					<h:panelGroup class="col-9">

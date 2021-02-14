@@ -34,7 +34,11 @@
 								<h:panelGroup layout="block" class="form-group col">
 									<h:outputLabel for="mail" value="#{msg['registration.mail']}" />
 									<h:inputText class="form-control" id="mail" value="#{registrationBean.user.mail}"
-												 required="true" requiredMessage="#{msg['form.required']}"/>
+												 required="true" requiredMessage="#{msg['form.required']}"
+												 validatorMessage="#{msg['registration.mail.notvalid']}">
+										<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+										<f:validator validatorId="UserEmailValidator"/>
+									</h:inputText>
 									<h:message id="mailMessage" for="mail" errorClass="alert-danger" />
 								</h:panelGroup>
 							</h:panelGroup>
@@ -78,17 +82,17 @@
 							</h:panelGroup>
 								<h:panelGroup layout="block" class="form-row">
 								<h:panelGroup layout="block" class="form-group col-md-4">
-									<h:outputLabel for="postcode" value="#{msg['registration.postcode']}" />
-									<h:inputText class="form-control" id="postcode" value="#{registrationBean.zipTemp}">													>
+									<h:outputLabel for="zipCode" value="#{msg['registration.zipCode']}" />
+									<h:inputText class="form-control" id="zipCode" value="#{registrationBean.zipTemp}">													>
 										<f:ajax event="keyup" render="cityPanel" listener="#{registrationBean.updateCity}"/>
 									</h:inputText>
-									<h:message id="postcodeMessage" for="postcode" errorClass="alert-danger" />
+									<h:message id="postcodeMessage" for="zipCode" errorClass="alert-danger" />
 								</h:panelGroup>
 								<h:panelGroup layout="block" id="cityPanel" class="form-group col-md-8">
 									<h:outputLabel for="city" value="#{msg['registration.city']}" />
 									<h:selectOneMenu class="form-control" id="city" value="#{registrationBean.address.city}">
 										<f:selectItem itemValue="#{registrationBean.address.city}" itemLabel="#{msg['registration.city.default']}" />
-										<f:selectItems value="#{registrationBean.cityList}" var="cityVal" itemValue="#{cityVal}" itemLabel="#{cityVal.postcode} - #{cityVal.label}" />
+										<f:selectItems value="#{registrationBean.cityList}" var="cityVal" itemValue="#{cityVal}" itemLabel="#{cityVal.zipCode} - #{cityVal.label}" />
 										<f:converter converterId="CityConverter" />
 									</h:selectOneMenu>
 								</h:panelGroup>

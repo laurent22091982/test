@@ -19,9 +19,10 @@
 						<h:panelGroup class="form-group" layout="block">
 							<h:outputLabel for="password" value="#{msg['login.password']}"/>
 							<h:inputSecret id="password" class="form-control" value="#{loginBean.password}" required="true" requiredMessage="#{msg['login.validation']}"/>
-							<h:message for="password" class="form-text text-muted" styleClass="errorMessage"/>
+							<h:message id="passwordMessage" for="password" errorClass="alert-danger" />
 						</h:panelGroup>
 						<h:commandButton id="signin" value="#{msg['login.button']}" class="btn btn-primary" action="#{loginBean.validateMailPassword}"/>
+						<h:message id="signinMessage" for="signin" errorClass="alert-danger" />
 						<br/>
 						<br/>
 					</h:form>

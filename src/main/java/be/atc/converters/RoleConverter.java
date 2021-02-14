@@ -13,7 +13,6 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 
-
 /**
  * @author Gautier Olivier
  *
@@ -34,8 +33,7 @@ public class RoleConverter implements Converter, Serializable {
             return null;
         }
         try {
-            role = RoleUtils.findOneRole(Integer.valueOf(value));
-            System.out.println("role" + role.getId() + role.getLabel());
+            role = RoleUtils.findOneRole(Integer.parseInt(value));
             return role;
         }
 
@@ -48,11 +46,9 @@ public class RoleConverter implements Converter, Serializable {
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         if(value instanceof Role) {
-            System.out.println("role" + ((Role) value).getId());
             return String.valueOf(((Role) value).getId());
         } else {
             return null;
         }
     }
 }
-

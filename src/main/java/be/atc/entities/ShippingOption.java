@@ -2,17 +2,16 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 
 /**
- * The persistent class for the shipping_options database table.
+ * The persistent class for the shippings_options database table.
  * 
  */
 @Entity
-@Table(name="shipping_options")
+@Table(name="shippings_options")
 @NamedQuery(name="ShippingOption.findAll", query="SELECT s FROM ShippingOption s")
 public class ShippingOption implements Serializable {
 	private static final long serialVersionUID = 1L;

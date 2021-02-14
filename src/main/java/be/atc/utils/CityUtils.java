@@ -9,6 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Gautier Olivier
+ *
+ */
+
 public class CityUtils {
 
     public static City findOneCity(int id) {
@@ -27,13 +32,13 @@ public class CityUtils {
         return cityList;
     }
 
-    public static ArrayList<City> findPostcodeCity(String postcode) {
+    public static ArrayList<City> findPostcodeCity(String zipCode) {
         List<City> cityList;
         ArrayList<City> cityArrayList = new ArrayList<>();
         EntityFinder<City> ef = new EntityFinderImpl<City>();
         Map<String, String> params = new HashMap<>();
-        params.put("postcode", postcode + '%');
-        cityList = ef.findByNamedQuery("City.findPostcode", new City(), params);
+        params.put("zipCode", zipCode + '%');
+        cityList = ef.findByNamedQuery("City.findZipCode", new City(), params);
         cityArrayList.addAll(cityList);
         return cityArrayList;
     }

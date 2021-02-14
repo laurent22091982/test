@@ -2,8 +2,7 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 
@@ -40,21 +39,18 @@ public class Item implements Serializable {
 	private float price;
 
 	@NotNull
-	private int quantity;
-
-	@NotNull
 	private float volume;
 
 	@NotNull
 	private float weight;
 
-	//bi-directional many-to-one association to BasketItem
+	//bi-directional many-to-one association to ItemStockArea
 	@OneToMany(mappedBy="item")
-	private List<BasketItem> basketsItems;
+	private List<ItemStockArea> itemsStocksAreas;
 
 	//bi-directional many-to-one association to ItemElement
 	@OneToMany(mappedBy="item")
-	private List<ItemElement> itemElements;
+	private List<ItemElement> itemsElements;
 
 	//bi-directional many-to-one association to Brand
 	@ManyToOne
@@ -128,14 +124,6 @@ public class Item implements Serializable {
 		this.price = price;
 	}
 
-	public int getQuantity() {
-		return this.quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public float getVolume() {
 		return this.volume;
 	}
@@ -152,45 +140,45 @@ public class Item implements Serializable {
 		this.weight = weight;
 	}
 
-	public List<BasketItem> getBasketsItems() {
-		return this.basketsItems;
+	public List<ItemStockArea> getItemsStocksAreas() {
+		return this.itemsStocksAreas;
 	}
 
-	public void setBasketsItems(List<BasketItem> basketsItems) {
-		this.basketsItems = basketsItems;
+	public void setItemsStocksAreas(List<ItemStockArea> itemsStocksAreas) {
+		this.itemsStocksAreas = itemsStocksAreas;
 	}
 
-	public BasketItem addBasketItem(BasketItem basketItem) {
-		getBasketsItems().add(basketItem);
-		basketItem.setItem(this);
+	public ItemStockArea addItemStockArea(ItemStockArea itemStockArea) {
+		getItemsStocksAreas().add(itemStockArea);
+		itemStockArea.setItem(this);
 
-		return basketItem;
+		return itemStockArea;
 	}
 
-	public BasketItem removeBasketItem(BasketItem basketItem) {
-		getBasketsItems().remove(basketItem);
-		basketItem.setItem(null);
+	public ItemStockArea removeItemStockArea(ItemStockArea itemStockArea) {
+		getItemsStocksAreas().remove(itemStockArea);
+		itemStockArea.setItem(null);
 
-		return basketItem;
+		return itemStockArea;
 	}
 
-	public List<ItemElement> getItemElements() {
-		return this.itemElements;
+	public List<ItemElement> getItemsElements() {
+		return this.itemsElements;
 	}
 
-	public void setItemElements(List<ItemElement> itemElements) {
-		this.itemElements = itemElements;
+	public void setItemElements(List<ItemElement> itemsElements) {
+		this.itemsElements = itemsElements;
 	}
 
 	public ItemElement addItemElement(ItemElement itemElement) {
-		getItemElements().add(itemElement);
+		getItemsElements().add(itemElement);
 		itemElement.setItem(this);
 
 		return itemElement;
 	}
 
 	public ItemElement removeItemElement(ItemElement itemElement) {
-		getItemElements().remove(itemElement);
+		getItemsElements().remove(itemElement);
 		itemElement.setItem(null);
 
 		return itemElement;

@@ -1,16 +1,18 @@
 package be.atc.entities;
 
+import be.atc.enumerations.StatusEnum;
+
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 
 /**
- * The persistent class for the item_elements database table.
+ * The persistent class for the items_elements database table.
  * 
  */
 @Entity
-@Table(name="item_elements")
+@Table(name="items_elements")
 @NamedQuery(name="ItemElement.findAll", query="SELECT i FROM ItemElement i")
 public class ItemElement implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,24 +22,24 @@ public class ItemElement implements Serializable {
 	private int id;
 
 	@NotNull
-	private boolean active;
+	@Enumerated(EnumType.STRING)
+	private StatusEnum status;
 
-	private int barcode;
+	@NotNull
+	private float price;
+
+	@NotNull
+	private int quantity;
 
 	//bi-directional many-to-one association to CustomerOrder
 	@ManyToOne
 	@JoinColumn(name="id_customer_order")
 	private CustomerOrder customerOrder;
 
-	//bi-directional many-to-one association to Returns
+	//bi-directional many-to-one association to ReturnItem
 	@ManyToOne
-	@JoinColumn(name="id_returns")
-	private Returns returns;
-
-	//bi-directional many-to-one association to Stock
-	@ManyToOne
-	@JoinColumn(name="id_stock")
-	private Stock stock;
+	@JoinColumn(name="id_return_item")
+	private ReturnItem returnItem;
 
 	//bi-directional many-to-one association to Item
 	@ManyToOne
@@ -55,21 +57,17 @@ public class ItemElement implements Serializable {
 		this.id = id;
 	}
 
-	public boolean isActive() {
-		return this.active;
-	}
+	public StatusEnum getStatus() { return status; }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+	public void setStatus(StatusEnum status) { this.status = status; }
 
-	public int getBarcode() {
-		return this.barcode;
-	}
+	public float getPrice() { return price; }
 
-	public void setBarcode(int barcode) {
-		this.barcode = barcode;
-	}
+	public void setPrice(float price) { this.price = price; }
+
+	public int getQuantity() { return quantity; }
+
+	public void setQuantity(int quantity) { this.quantity = quantity; }
 
 	public CustomerOrder getCustomerOrder() {
 		return this.customerOrder;
@@ -79,20 +77,12 @@ public class ItemElement implements Serializable {
 		this.customerOrder = customerOrder;
 	}
 
-	public Returns getReturns() {
-		return this.returns;
+	public ReturnItem getReturnItem() {
+		return this.returnItem;
 	}
 
-	public void setReturns(Returns returns) {
-		this.returns = returns;
-	}
-
-	public Stock getStock() {
-		return this.stock;
-	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
+	public void setReturnItem(ReturnItem returnItem) {
+		this.returnItem = returnItem;
 	}
 
 	public Item getItem() {

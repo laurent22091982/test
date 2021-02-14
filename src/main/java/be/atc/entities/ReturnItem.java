@@ -2,19 +2,18 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 
 /**
- * The persistent class for the returns database table.
+ * The persistent class for the returns_items database table.
  * 
  */
 @Entity
-@Table(name="returns")
-@NamedQuery(name="Return.findAll", query="SELECT r FROM Returns r")
-public class Returns implements Serializable {
+@Table(name="returns_items")
+@NamedQuery(name="ReturnItem.findAll", query="SELECT r FROM ReturnItem r")
+public class ReturnItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -26,14 +25,14 @@ public class Returns implements Serializable {
 	private String label;
 
 	//bi-directional many-to-one association to ItemElement
-	@OneToMany(mappedBy="returns")
-	private List<ItemElement> itemElements;
+	@OneToMany(mappedBy="returnItem")
+	private List<ItemElement> itemsElements;
 
 	//bi-directional many-to-one association to Rma
-	@OneToMany(mappedBy="returns")
+	@OneToMany(mappedBy="returnItem")
 	private List<Rma> rmas;
 
-	public Returns() {
+	public ReturnItem() {
 	}
 
 	public int getId() {
@@ -52,24 +51,24 @@ public class Returns implements Serializable {
 		this.label = label;
 	}
 
-	public List<ItemElement> getItemElements() {
-		return this.itemElements;
+	public List<ItemElement> getItemsElements() {
+		return this.itemsElements;
 	}
 
-	public void setItemElements(List<ItemElement> itemElements) {
-		this.itemElements = itemElements;
+	public void setItemsElements(List<ItemElement> itemsElements) {
+		this.itemsElements = itemsElements;
 	}
 
 	public ItemElement addItemElement(ItemElement itemElement) {
-		getItemElements().add(itemElement);
-		itemElement.setReturns(this);
+		getItemsElements().add(itemElement);
+		itemElement.setReturnItem(this);
 
 		return itemElement;
 	}
 
 	public ItemElement removeItemElement(ItemElement itemElement) {
-		getItemElements().remove(itemElement);
-		itemElement.setReturns(null);
+		getItemsElements().remove(itemElement);
+		itemElement.setReturnItem(null);
 
 		return itemElement;
 	}
@@ -84,14 +83,14 @@ public class Returns implements Serializable {
 
 	public Rma addRma(Rma rma) {
 		getRmas().add(rma);
-		rma.setReturns(this);
+		rma.setReturnItem(this);
 
 		return rma;
 	}
 
 	public Rma removeRma(Rma rma) {
 		getRmas().remove(rma);
-		rma.setReturns(null);
+		rma.setReturnItem(null);
 
 		return rma;
 	}

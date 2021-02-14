@@ -29,7 +29,7 @@
 				<h:panelGroup class="col text-right" layout="block">
 					<h:form>
 						<h:panelGroup rendered="#{sessionScope['connectedUser'] ne null}">
-							<h:outputText class="text-capitalize" value="#{msg['header.log.hello']} #{sessionScope['username']}"></h:outputText>
+							<h:outputText class="text-capitalize" value="#{msg['header.log.hello']} #{sessionScope['connectedUser'].firstname}"></h:outputText>
 							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>
 							<h:commandButton id="hdbtn1" value="#{msg['header.log.button1']}" class="btn btn-outline-primary my-2 my-sm-0" action="myprofile"/>
 							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"></h:outputText>

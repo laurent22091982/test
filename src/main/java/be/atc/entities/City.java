@@ -2,9 +2,7 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Arrays;
+import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,8 +14,8 @@ import java.util.Objects;
 @Entity
 @Table(name="cities")
 @NamedQueries({
-		@NamedQuery(name = "City.findAll", query = "SELECT c FROM City c ORDER BY c.postcode"),
-		@NamedQuery(name = "City.findPostcode", query = "SELECT c FROM City c WHERE c.postcode LIKE :postcode ORDER BY c.postcode")
+		@NamedQuery(name = "City.findAll", query = "SELECT c FROM City c ORDER BY c.zipCode"),
+		@NamedQuery(name = "City.findZipCode", query = "SELECT c FROM City c WHERE c.zipCode LIKE :zipCode ORDER BY c.zipCode")
 })
 
 public class City implements Serializable {
@@ -33,7 +31,8 @@ public class City implements Serializable {
 
 	@NotNull
 	@Size(min = 2, max = 10)
-	private String postcode;
+	@Column(name="zip_code")
+	private String zipCode;
 
 	//bi-directional many-to-one association to Address
 	@OneToMany(mappedBy="city")
@@ -63,12 +62,12 @@ public class City implements Serializable {
 		this.label = label;
 	}
 
-	public String getPostcode() {
-		return this.postcode;
+	public String getZipCode() {
+		return this.zipCode;
 	}
 
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	public List<Address> getAddresses() {
@@ -102,13 +101,6 @@ public class City implements Serializable {
 	}
 
 	@Override
-	public int hashCode() {
-		int result = Objects.hash(id, label, postcode);
-		result = 31 * result;
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof City)) {
 			return false;
@@ -118,6 +110,11 @@ public class City implements Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public int hashCode()  {
+		return Objects.hash(id, label, zipCode);
 	}
 
 	@Override

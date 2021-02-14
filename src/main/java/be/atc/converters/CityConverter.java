@@ -1,7 +1,6 @@
 package be.atc.converters;
 
 import be.atc.entities.City;
-import be.atc.entities.Role;
 import be.atc.utils.CityUtils;
 
 import javax.enterprise.context.RequestScoped;
@@ -34,8 +33,7 @@ public class CityConverter implements Converter, Serializable {
             return null;
         }
         try {
-            city = CityUtils.findOneCity(Integer.valueOf(value));
-            System.out.println("city" + city.getId() + city.getLabel());
+            city = CityUtils.findOneCity(Integer.parseInt(value));
             return city;
         }
 
@@ -48,12 +46,9 @@ public class CityConverter implements Converter, Serializable {
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         if(value instanceof City) {
-            System.out.println("city" + ((City) value).getId());
             return String.valueOf(((City) value).getId());
         } else {
             return null;
         }
     }
 }
-
-

@@ -4,6 +4,11 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+/**
+ * @author Gautier Olivier
+ *
+ */
+
 @Named
 @SessionScoped
 public class ChangeLocale implements Serializable {

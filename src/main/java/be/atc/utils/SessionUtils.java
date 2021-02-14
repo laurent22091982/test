@@ -6,6 +6,11 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Gautier Olivier
+ *
+ */
+
 public class SessionUtils {
 
     public static HttpSession getSession() {

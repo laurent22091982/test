@@ -1,18 +1,22 @@
 package be.atc.beans;
 
 import be.atc.entities.User;
-import be.atc.utils.UserUtils;
-import be.atc.utils.SessionUtils;
+
+import static be.atc.utils.SessionUtils.*;
+import static be.atc.utils.UserUtils.*;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 
-import static be.atc.utils.SessionUtils.*;
-import static be.atc.utils.UserUtils.validateLogin;
+/**
+ * @author Gautier Olivier
+ *
+ */
 
 @Named
 @SessionScoped
@@ -23,6 +27,8 @@ public class LoginBean implements Serializable {
     private String password;
     User user = new User();
 
+    FacesMessage messageFailedLogin = new FacesMessage(FacesMessage.SEVERITY_ERROR,"#{msg['login.invalid']}", "#{msg['login.invalid']}");
+
     //validate login
     public String validateMailPassword() {
         user = validateLogin(mail, password);
@@ -31,11 +37,7 @@ public class LoginBean implements Serializable {
             session.setAttribute("connectedUser", user);
             return "success";
         } else {
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Incorrect Username and Password",
-                            "Please enter correct username and Password"));
+            FacesContext.getCurrentInstance().addMessage( null, messageFailedLogin);
             return "login";
         }
     }

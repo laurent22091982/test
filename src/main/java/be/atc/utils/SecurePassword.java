@@ -6,6 +6,11 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Gautier Olivier
+ *
+ */
+
 public class SecurePassword {
 
     public static List<Object> hashPassword (String password) {

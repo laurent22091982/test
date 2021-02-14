@@ -2,8 +2,7 @@ package be.atc.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 
@@ -12,7 +11,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="truck_models")
+@Table(name="trucks_models")
 @NamedQuery(name="TruckModel.findAll", query="SELECT t FROM TruckModel t")
 public class TruckModel implements Serializable {
 	private static final long serialVersionUID = 1L;
