@@ -1,4 +1,4 @@
-package be.atc.utils;
+package be.atc.services;
 
 import be.atc.connection.EntityFinder;
 import be.atc.connection.EntityFinderImpl;
@@ -14,32 +14,30 @@ import java.util.Map;
  *
  */
 
-public class CityUtils {
+public class CityServices {
 
     public static City findOneCity(int id) {
         City city;
-        EntityFinder<City> ef = new EntityFinderImpl<City>();
+        EntityFinder<City> ef = new EntityFinderImpl<>();
         city = ef.findOne(new City(), id);
 
         return city;
     }
 
-    public static List<City> findAllCity() {
+    public static List<City> findAllCities() {
         List<City> cityList;
-        EntityFinder<City> ef = new EntityFinderImpl<City>();
+        EntityFinder<City> ef = new EntityFinderImpl<>();
         cityList = ef.findByNamedQuery("City.findAll", new City(), null);
 
         return cityList;
     }
 
-    public static ArrayList<City> findPostcodeCity(String zipCode) {
+    public static ArrayList<City> findCitiesByZipCode(String zipCode) {
         List<City> cityList;
-        ArrayList<City> cityArrayList = new ArrayList<>();
-        EntityFinder<City> ef = new EntityFinderImpl<City>();
+        EntityFinder<City> ef = new EntityFinderImpl<>();
         Map<String, String> params = new HashMap<>();
         params.put("zipCode", zipCode + '%');
         cityList = ef.findByNamedQuery("City.findZipCode", new City(), params);
-        cityArrayList.addAll(cityList);
-        return cityArrayList;
+        return new ArrayList<>(cityList);
     }
 }

@@ -38,8 +38,8 @@
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
-            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/stockmanagement"/>
+<!--            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/stockmanagement"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-        </properties>
+    -->    </properties>
     </persistence-unit>
 </persistence>

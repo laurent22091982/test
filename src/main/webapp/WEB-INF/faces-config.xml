@@ -82,6 +82,11 @@
             <to-view-id>/views/priv/myprofile.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>trucks</from-outcome>
+            <to-view-id>/views/priv/trucks.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
     </navigation-rule>
 
 </faces-config>

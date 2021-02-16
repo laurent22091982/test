@@ -86,7 +86,7 @@
 									<h:inputText class="form-control" id="zipCode" value="#{registrationBean.zipTemp}">													>
 										<f:ajax event="keyup" render="cityPanel" listener="#{registrationBean.updateCity}"/>
 									</h:inputText>
-									<h:message id="postcodeMessage" for="zipCode" errorClass="alert-danger" />
+									<h:message id="zipCodeMessage" for="zipCode" errorClass="alert-danger" />
 								</h:panelGroup>
 								<h:panelGroup layout="block" id="cityPanel" class="form-group col-md-8">
 									<h:outputLabel for="city" value="#{msg['registration.city']}" />

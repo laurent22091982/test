@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		 xmlns:ui="http://java.sun.com/jsf/facelets"
+		 xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:f="http://java.sun.com/jsf/core">
+	<ui:composition template="/WEB-INF/templates/templateConnected.xhtml">
+		<ui:define name="title">#{msg['trucks.title']}</ui:define>
+		<ui:define name="content">
+			<h:panelGroup layout="block">
+				<h2>#{msg['trucks.intro']}</h2>
+				<h:form>
+					<h:commandButton class="btn btn-primary" value="#{msg['trucks.add']}" action="#{trucksBean.addTruck}" />
+				</h:form>
+			</h:panelGroup>
+			<h:dataTable value="#{trucksBean.trucksList}" var="truck" class="table table-hover">
+				<h:column>
+					<f:facet name="header">#{msg['trucks.label']}</f:facet>
+					<h:outputText value="#{truck.label}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg['trucks.price']}</f:facet>
+					#{truck.price}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg['trucks.carrier.name']}</f:facet>
+					#{truck.carrier.name}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg['trucks.model.label']}</f:facet>
+					#{truck.truckModel.label}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg['trucks.model.maxWeight']}</f:facet>
+					#{truck.truckModel.maxWeight}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg['trucks.model.maxVolume']}</f:facet>
+					#{truck.truckModel.maxVolume}
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>

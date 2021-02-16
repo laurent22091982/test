@@ -11,30 +11,5 @@
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="stockmanagement/EclipseLink" uuid="3fa9b210-1736-4b1c-857d-bff61d1e14aa">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>EclipseLink
-
-C:/Data/IntelliJ-workspace/stockmanagement/src/main/resources/META-INF/persistence.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/stockmanagement</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="jdbc/stockmanagement" uuid="b2867e7a-6044-45e1-b52e-4bf4ee3788c9">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Tomcat.Resource
-
-C:/Data/IntelliJ-workspace/stockmanagement/src/main/webapp/META-INF/context.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/stockmanagement?autoReconnect=true</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-      <driver-properties>
-        <property name="serverTimezone" value="UTC" />
-      </driver-properties>
-    </data-source>
   </component>
 </project>

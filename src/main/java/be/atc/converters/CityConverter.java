@@ -1,7 +1,8 @@
 package be.atc.converters;
 
 import be.atc.entities.City;
-import be.atc.utils.CityUtils;
+
+import static be.atc.services.CityServices.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -33,7 +34,7 @@ public class CityConverter implements Converter, Serializable {
             return null;
         }
         try {
-            city = CityUtils.findOneCity(Integer.parseInt(value));
+            city = findOneCity(Integer.parseInt(value));
             return city;
         }
 

@@ -1,6 +1,6 @@
 package be.atc.validators;
 
-import static be.atc.utils.UserUtils.*;
+import static be.atc.services.UserServices.*;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -25,7 +25,7 @@ public class UserEmailValidator implements Validator {
         String email = (String) o;
 
         // Check email already exist
-        if ( !(findByMail(email) == null)) {
+        if ( !(findUserByMail(email) == null)) {
             String message = facesContext.getApplication().evaluateExpressionGet(facesContext, "#{msg['registration.mail.exist']}", String.class);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
             throw new ValidatorException(msg);
