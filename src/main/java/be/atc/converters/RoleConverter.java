@@ -1,7 +1,7 @@
 package be.atc.converters;
 
 import be.atc.entities.Role;
-import be.atc.utils.RoleUtils;
+import static be.atc.services.RoleServices.*;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
@@ -33,7 +33,7 @@ public class RoleConverter implements Converter, Serializable {
             return null;
         }
         try {
-            role = RoleUtils.findOneRole(Integer.parseInt(value));
+            role = findOneRole(Integer.parseInt(value));
             return role;
         }
 

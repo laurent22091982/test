@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -104,4 +105,22 @@ public class TruckModel implements Serializable {
 		return truck;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof TruckModel)) {
+			return false;
+		}
+		TruckModel other = (TruckModel) obj;
+		return (this.id != 0 || other.id == 0) && (this.id == 0 || this.id == other.id);
+	}
+
+	@Override
+	public int hashCode()  {
+		return Objects.hash(id, label, maxWeight, maxVolume);
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(getId());
+	}
 }

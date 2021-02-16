@@ -5,8 +5,8 @@ import be.atc.entities.City;
 import be.atc.entities.Role;
 import be.atc.entities.User;
 
-import static be.atc.utils.CityUtils.*;
-import static be.atc.utils.RoleUtils.*;
+import static be.atc.services.CityServices.*;
+import static be.atc.services.RoleServices.*;
 import static be.atc.utils.UserUtils.*;
 import be.atc.utils.SecurePassword;
 
@@ -52,7 +52,7 @@ public class RegistrationBean implements Serializable {
     }
 
     public void updateCity() {
-        cityList = findPostcodeCity(zipTemp);
+        cityList = findCitiesByZipCode(zipTemp);
     }
 
     public void hashPassword() {
