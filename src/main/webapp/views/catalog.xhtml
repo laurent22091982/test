@@ -7,19 +7,16 @@
 	<ui:composition template="/WEB-INF/templates/template.xhtml">
 		<ui:define name="title">#{msg['catalog.title']}</ui:define>
 		<ui:define name="content">
-			<div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				#{msg['catalog.content']}
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-			</div>
+			<h1 class="mt-4 mb-4">#{msg['catalog.title']}</h1>
+			<h:panelGroup class="container-fluid px-0" layout="block">
+				<h:panelGroup class="row d-flex justify-content-around" layout="block">
+
+
+
+
+					<h:link class="nav-link text-right mb-5 mt-5" outcome="index" value="#{msg['linkReturn']}" />
+				</h:panelGroup>
+			</h:panelGroup>
 		</ui:define>
 	</ui:composition>
 </html>
