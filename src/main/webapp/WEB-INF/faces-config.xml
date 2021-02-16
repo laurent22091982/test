@@ -65,10 +65,6 @@
             <to-view-id>/views/link4.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>link5</from-outcome>
-            <to-view-id>/views/link5.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>login</from-outcome>
             <to-view-id>/views/login.xhtml</to-view-id>
             <redirect/>

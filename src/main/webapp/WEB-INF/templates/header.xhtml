@@ -21,15 +21,15 @@
 						<h:link class="nav-link text-white border-right border-white" outcome="registration" value="#{msg['header.link3']}" />
 					</li>
 					<li class="nav-item active">
-						<h:link class="nav-link text-white" outcome="link5" value="#{msg['header.link5']}" />
+						<h:link class="nav-link text-white" outcome="link4" value="#{msg['header.link4']}" />
 					</li>
 				</ul>
 			</h:panelGroup>
 
 			<h:panelGroup class="col text-right" layout="block">
 				<h:form>
-					<h:panelGroup rendered="#{sessionScope['userrole'] ne null}">
-						<h:outputText class="text-capitalize" value="#{msg['header.log.hello']} #{sessionScope['username']}"/>
+					<h:panelGroup rendered="#{sessionScope['connectedUser'] ne null}">
+						<h:outputText class="text-capitalize" value="#{msg['header.log.hello']} #{sessionScope['connectedUser'].firstname}"/>
 						<h:outputText class="text-white" value="&nbsp;&nbsp;&nbsp;"/>
 						<h:commandButton id="hdbtn1" value="#{msg['header.log.button1']}" class="btn btn-success my-2 my-sm-0" action="myprofile"/>
 						<h:outputText class="text-white" value="&nbsp;&nbsp;&nbsp;"/>
