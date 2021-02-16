@@ -18,22 +18,22 @@
   			<h:outputScript library="js" name="formatDatePicker.js" />
   		</h:head>
 		<h:body>
-			<h:panelGroup class="container" layout="block">
-				<h:panelGroup class="row" layout="block">
-					<ui:include src="header.xhtml" />
-				</h:panelGroup>
+
+			<ui:include src="header.xhtml" />
+
 				<h:panelGroup class="row" layout="block">
 					<h:panelGroup class="col-3 px-0" rendered="#{sessionScope['connectedUser'] ne null}">
 						<ui:include src="menu.xhtml" />
 					</h:panelGroup>
+
 					<h:panelGroup class="col-9">
 						<ui:insert name="content" />
 					</h:panelGroup>
 				</h:panelGroup>
-				<h:panelGroup class="row" layout="block">
-					<ui:include src="footer.xhtml" />
-				</h:panelGroup>
-			</h:panelGroup>
+
+			<ui:include src="footer.xhtml" />
+
+
 		</h:body>
 	</f:view>
 </html>

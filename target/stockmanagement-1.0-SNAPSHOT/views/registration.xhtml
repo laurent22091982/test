@@ -97,12 +97,6 @@
 									</h:selectOneMenu>
 								</h:panelGroup>
 							</h:panelGroup>
-
-							<h:outputLabel for="status" value="#{msg['registration.select']}" />
-							<h:selectOneMenu id="status" value="#{registrationBean.user.status}">
-								<f:selectItems value="#{registrationBean.statusEnum}" var="statusVal" itemValue="#{statusVal}" itemLabel="#{statusVal.label}" />
-							</h:selectOneMenu>
-
 							<h:panelGroup layout="block" class="form-row">
 								<h:panelGroup layout="block" class="form-group col-md-4">
 									<h:outputLabel for="role" value="#{msg['registration.select']}" />
