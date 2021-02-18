@@ -8,15 +8,29 @@
 		<ui:define name="title">#{msg['catalog.title']}</ui:define>
 		<ui:define name="content">
 			<h1 class="mt-4 mb-4">#{msg['catalog.title']}</h1>
-			<h:panelGroup class="container-fluid px-0" layout="block">
-				<h:panelGroup class="row d-flex justify-content-around" layout="block">
+					<h:panelGroup class="container-fluid px-0" layout="block">
+						<h:panelGroup class="row d-flex justify-content-around" layout="block">
 
 
+							<h:panelGroup class="col-md-3">
+								<ui:repeat value="#{catalogBean.categoryList}" var="category">
+									<h:form>
+										<h:commandButton value="#{category.label}">
+											<f:ajax event="click" listener="#{catalogBean.completeItem}" render="output"/>
+										</h:commandButton>
+									</h:form>
+								</ui:repeat>
+							</h:panelGroup>
 
+							<h:panelGroup class="col-md-9" id="output">
+								<ui:repeat value="#{catalogBean.itemList}" var="item">
+									<h:outputText value="#{item.designation}"/>
+								</ui:repeat>
+							</h:panelGroup>
+						</h:panelGroup>
 
-					<h:link class="nav-link text-right mb-5 mt-5" outcome="index" value="#{msg['linkReturn']}" />
-				</h:panelGroup>
-			</h:panelGroup>
+						<h:link class="nav-link text-right mb-5 mt-5" outcome="index" value="#{msg['linkReturn']}" />
+					</h:panelGroup>
 		</ui:define>
 	</ui:composition>
 </html>

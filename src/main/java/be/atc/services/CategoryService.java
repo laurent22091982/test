@@ -6,16 +6,11 @@ import be.atc.entities.Category;
 
 import java.util.List;
 
-/**
- * @author Gravez Laurent
- *
- */
-
 public class CategoryService {
 
     public List<be.atc.entities.Category> findAllCategory() {
-        List<Category> categoryList;
-        EntityFinder<Category> ef = new EntityFinderImpl<>();
+        List<be.atc.entities.Category> categoryList;
+        EntityFinder<be.atc.entities.Category> ef = new EntityFinderImpl<>();
         categoryList = ef.findByNamedQuery("Category.findAll", new Category(), null);
         return categoryList;
     }

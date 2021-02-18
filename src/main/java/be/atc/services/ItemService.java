@@ -7,16 +7,11 @@ import be.atc.entities.Item;
 
 import java.util.List;
 
-/**
- * @author Gravez Laurent
- *
- */
-
 public class ItemService {
 
     public List<be.atc.entities.Item> findAllItem() {
-        List<Item> itemList;
-        EntityFinder<Item> ef = new EntityFinderImpl<>();
+        List<be.atc.entities.Item> itemList;
+        EntityFinder<be.atc.entities.Item> ef = new EntityFinderImpl<>();
         itemList = ef.findByNamedQuery("Item.findAll", new Item(), null);
         return itemList;
     }
