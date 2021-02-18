@@ -1,27 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html 	xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:h="http://java.sun.com/jsf/html">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		 xmlns:ui="http://java.sun.com/jsf/facelets"
+		 xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:f="http://java.sun.com/jsf/core">
+
 <h:body>
-	<h:panelGroup class="navbar navbar-expand navbar-light bg-light" layout="bock">
-		<h:link class="navbar-brand" outcome="index" value="Tout mon jardin"/>
+	<nav>
+	<h:panelGroup class="navbar navbar-expand-sm navbar-secondary bg-dark" layout="bock">
+		<h:link class="navbar-brand text-white" outcome="index" value="TOUT MON JARDIN"/>
 			<h:panelGroup class="collapse navbar-collapse" id="navbarSupportedContent" layout="block">
 				<h:panelGroup class="col" layout="block">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<h:link class="nav-link" outcome="index" value="#{msg['header.link1']}" />
+						<h:link class="nav-link text-white border-right border-white" outcome="index" value="#{msg['header.link1']}" />
 					</li>
 					<li class="nav-item active">
-						<h:link class="nav-link" outcome="catalog" value="#{msg['header.link2']}" />
+						<h:link class="nav-link text-white border-right border-white" outcome="catalog" value="#{msg['header.link2']}" />
 					</li>
 					<li class="nav-item active">
-						<h:link class="nav-link" outcome="registration" value="#{msg['header.link3']}" />
+						<h:link class="nav-link text-white border-right border-white" outcome="registration" value="#{msg['header.link3']}" />
 					</li>
 					<li class="nav-item active">
-						<h:link class="nav-link" outcome="link5" value="#{msg['header.link5']}" />
+						<h:link class="nav-link text-white" outcome="link5" value="#{msg['header.link5']}" />
 					</li>
 				</ul>
 				</h:panelGroup>
@@ -30,41 +31,41 @@
 					<h:form>
 						<h:panelGroup rendered="#{sessionScope['userrole'] ne null}">
 							<h:outputText class="text-capitalize" value="#{msg['header.log.hello']} #{sessionScope['username']}"/>
-							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"/>
-							<h:commandButton id="hdbtn1" value="#{msg['header.log.button1']}" class="btn btn-outline-primary my-2 my-sm-0" action="myprofile"/>
-							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"/>
-							<h:commandButton id="hdbtn2" value="#{msg['header.log.button2']}" class="btn btn-outline-primary my-2 my-sm-0" action="#{loginBean.logout}"/>
+							<h:outputText class="text-white" value="&nbsp;&nbsp;&nbsp;"/>
+							<h:commandButton id="hdbtn1" value="#{msg['header.log.button1']}" class="btn btn-success my-2 my-sm-0" action="myprofile"/>
+							<h:outputText class="text-white" value="&nbsp;&nbsp;&nbsp;"/>
+							<h:commandButton id="hdbtn2" value="#{msg['header.log.button2']}" class="btn btn-success my-2 my-sm-0" action="#{loginBean.logout}"/>
 						</h:panelGroup>
 						<h:panelGroup rendered="#{sessionScope['userrole'] eq null}">
-							<h:commandButton id="hdbtn3" value="#{msg['header.button1']}" class="btn btn-outline-primary my-2 my-sm-0" action="basket"/>
-							<h:outputText class="text-primary" value="&nbsp;&nbsp;&nbsp;"/>
-							<h:commandButton id="hdbtn4" value="#{msg['header.button2']}" class="btn btn-outline-primary my-2 my-sm-0" action="login"/>
+							<h:commandButton id="hdbtn3" value="#{msg['header.button1']}" class="btn btn-success my-2 my-sm-0" action="basket"/>
+							<h:outputText class="text-white" value="&nbsp;&nbsp;&nbsp;"/>
+							<h:commandButton id="hdbtn4" value="#{msg['header.button2']}" class="btn btn-success my-2 my-sm-0" action="login"/>
 						</h:panelGroup>
 					</h:form>
 				</h:panelGroup>
 				<h:panelGroup class="col-1" layout="block">
 					<h:form id="Locale_form">
 						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active">
-								<h:commandLink value="#{msg['header.lang1']}" action="#{changeLocale.setFrenchLocale}" />
+							<li class="nav-item active ">
+								<h:commandLink class="text-white" value="#{msg['header.lang1']}" action="#{changeLocale.setFrenchLocale}" />
 							</li>
 							<li class="nav-item active">
-								<h:outputText class="text-primary" value="&nbsp;|&nbsp;"/>
+								<h:outputText class="text-white" value="&nbsp;|&nbsp;"/>
 							</li>
 							<li class="nav-item active">
-								<h:commandLink value="#{msg['header.lang2']}" action="#{changeLocale.setDutchLocale}" />
+								<h:commandLink class="text-white" value="#{msg['header.lang2']}" action="#{changeLocale.setDutchLocale}" />
 							</li>
 							<li class="nav-item active">
-								<h:outputText class="text-primary" value="&nbsp;|&nbsp;"/>
+								<h:outputText class="text-white" value="&nbsp;|&nbsp;"/>
 							</li>
 							<li class="nav-item active">
-								<h:commandLink value="#{msg['header.lang3']}" action="#{changeLocale.setEnglishLocale}" />
+								<h:commandLink class="text-white" value="#{msg['header.lang3']}" action="#{changeLocale.setEnglishLocale}" />
 							</li>
 						</ul>
 					</h:form>
 				</h:panelGroup>
 			</h:panelGroup>
 	</h:panelGroup>
+	</nav>
 </h:body>
-
 </html>

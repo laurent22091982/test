@@ -5,41 +5,56 @@
 		xmlns:h="http://java.sun.com/jsf/html"
 		xmlns:f="http://java.sun.com/jsf/core">
 
-<h:panelGroup class="bg-light text-center text-lg-start" layout="block">
+<h:panelGroup class="text-center text-lg-start" style="background-color: #E8E7E6" layout="block">
 	<h:panelGroup class="container p-4" layout="block">
 		<h:panelGroup class="row" layout="block">
-			<h:panelGroup class="col-lg-6 col-md-12 mb-4 mb-md-0" layout="block">
+			<h:panelGroup class="text-left col-lg-6 col-md-12 mb-4 mb-md-0" layout="block">
 				<h5 class="text-uppercase">#{msg['footer.title']}</h5>
-				<p>#{msg['footer.content']}</p>
+				<h:outputText class="font-weight-bold" value="#{msg['footer.contact1']}"/>
+				<h:outputText class="ml-1" value="#{msg['footer.content1']}"/><br/>
+				<h:outputText class="font-weight-bold" value="#{msg['footer.contact2']}"/>
+				<h:outputText class="ml-1" value="#{msg['footer.content2']}"/><br/>
+				<h:outputText class="font-weight-bold" value="#{msg['footer.contact3']}"/>
+				<h:outputText class="ml-1" value="#{msg['footer.content3']}"/><br/>
+				<h:outputText class="font-weight-bold" value="#{msg['footer.contact4']}"/>
+				<h:outputText class="ml-1" value="#{msg['footer.content4']}"/>
 			</h:panelGroup>
 			<h:panelGroup class="col-lg-3 col-md-6 mb-4 mb-md-0" layout="block">
 				<h5 class="text-uppercase">#{msg['footer.links1.title']}</h5>
 				<ul class="list-unstyled mb-0">
 					<li>
-						<a href="#" class="text-dark">#{msg['footer.links1.link1']}</a>
+						<h:link outcome="rgpd" value="#{msg['footer.links1.link1']}"/>
 					</li>
 					<li>
-						<a href="#" class="text-dark">#{msg['footer.links1.link2']}</a>
+						<h:link outcome="delivery" value="#{msg['footer.links1.link2']}"/>
+					</li>
+					<li>
+						<h:link outcome="condition" value="#{msg['footer.links1.link3']}"/>
 					</li>
 				</ul>
 			</h:panelGroup>
 			<h:panelGroup class="col-lg-3 col-md-6 mb-4 mb-md-0" layout="block">
 				<h5 class="text-uppercase">#{msg['footer.links2.title']}</h5>
-				<ul class="list-unstyled mb-0">
-					<li>
-						<a href="#" class="text-dark">#{msg['footer.links2.link1']}</a>
-					</li>
-					<li>
-						<a href="#" class="text-dark">#{msg['footer.links2.link2']}</a>
-					</li>
-				</ul>
+				<h:outputLink value="https://www.facebook.com/">
+					<h:graphicImage class="mr-2" value="/resources/images/icons/facebook.png" width="12%"/>
+				</h:outputLink>
+				<h:outputLink value="https://www.linkedin.com/">
+					<h:graphicImage class="mr-2" value="/resources/images/icons/linkedin.png" width="12%"/>
+				</h:outputLink>
+				<h:outputLink value="https://www.instagram.com/">
+					<h:graphicImage class="mr-2" value="/resources/images/icons/instagram.png" width="12%"/>
+				</h:outputLink>
+				<h:outputLink value="https://www.youtube.com/">
+					<h:graphicImage class="" value="/resources/images/icons/youtube.png" width="12%"/>
+				</h:outputLink>
 			</h:panelGroup>
 		</h:panelGroup>
 	</h:panelGroup>
-	<h:panelGroup class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)" layout="block">
+	<h:panelGroup class="text-center p-3 bg-dark text-white" layout="block">
 		#{msg['footer.copyright.title']}
-		<a class="text-dark" href="#">#{msg['footer.copyright.link']}</a>
+		<a class="text-white" href="#">#{msg['footer.copyright.link']}</a>
 	</h:panelGroup>
 </h:panelGroup>
+
 
 </html>

@@ -69,6 +69,13 @@
             <to-view-id>/views/priv/myprofile.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>rgpd</from-outcome>
+            <to-view-id>/views/rgpd.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+
     </navigation-rule>
 
 </faces-config>

@@ -14,5 +14,4 @@ public class CategoryService {
         categoryList = ef.findByNamedQuery("Category.findAll", new Category(), null);
         return categoryList;
     }
-
 }
